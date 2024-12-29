@@ -15,6 +15,11 @@ adjustWindowSizeData();
 
 // Criando posições randômicas
 function randomPosition() {
+// remover o mosquito anterio caso exista
+if(document.getElementById("fly")) {
+document.getElementById("fly").remove();
+}
+
 var positionY = Math.floor(Math.random() * height - 90);
 var positionX = Math.floor(Math.random() * width - 90);
 
@@ -33,12 +38,14 @@ fly.className = randomSize() + randomSide();
 fly.style.left = positionX + 'px';
 fly.style.top = positionY + 'px';
 fly.style.position = 'absolute';
+fly.id = 'fly'
 
 // Adiciona um elemento/filho no body
 document.body.appendChild(fly);
 }
 
-console.log(randomPosition())
+console.log(setInterval( () => { randomPosition() }, 1000));
+
 function randomSize() {
     var breakpoint = Math.floor(Math.random() * 3);
 
