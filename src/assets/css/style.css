@@ -1,4 +1,22 @@
-.fly {
+.flyOne {
     height: 50px;
     width: 50px;
+}
+
+.flyTwo {
+    height: 70px;
+    width: 70px;
+}
+
+.flyThree {
+    height: 90px;
+    width: 90px;
+}
+
+.left {
+    transform: scaleX(1);
+}
+
+.right {
+    transform: scale(-1);
 }

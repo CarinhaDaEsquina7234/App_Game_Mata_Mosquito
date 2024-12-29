@@ -14,10 +14,11 @@ console.log(height, width);
 adjustWindowSizeData();
 
 // Criando posições randômicas
+function randomPosition() {
 var positionY = Math.floor(Math.random() * height - 90);
 var positionX = Math.floor(Math.random() * width - 90);
 
-// Controle de posição para evitar resultado 0
+// Controle de posição para evitar resultado negativo
 positionX = positionX < 0 ? 0 : positionX;
 positionY = positionY < 0 ? 0 : positionY
 
@@ -26,8 +27,42 @@ console.log(positionX, positionY);
 // Criar o elemento html
 var fly = document.createElement('img');
 fly.src = '../assets/images/mosca.png';
-fly.className = 'fly';
+fly.className = randomSize() + randomSide();
+
+// Adiciona as posições do elemento em px(pixels)
 fly.style.left = positionX + 'px';
 fly.style.top = positionY + 'px';
-fly.style.position = 'absolute'
+fly.style.position = 'absolute';
+
+// Adiciona um elemento/filho no body
 document.body.appendChild(fly);
+}
+
+console.log(randomPosition())
+function randomSize() {
+    var breakpoint = Math.floor(Math.random() * 3);
+
+    switch(breakpoint) {
+        case 0:
+            return 'flyOne';
+
+        case 1:
+            return 'flyTwo';
+
+        case 2:
+            return 'flyThree';
+    }
+}
+
+function randomSide() {
+    var breakpoint = Math.floor(Math.random() * 2);
+
+    switch(breakpoint) {
+        case 0:
+            return ' left';
+
+        case 1:
+            return ' right';
+
+    }
+}
