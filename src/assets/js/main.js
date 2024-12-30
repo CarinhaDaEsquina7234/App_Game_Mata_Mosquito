@@ -1,6 +1,9 @@
 var height = 0;
 var width = 0;
 
+// Variavel de vidas restantes
+var lifes = 1;
+
 // Função para ajustar as dimeesões da janela do browser
 function adjustWindowSizeData() {
 
@@ -15,9 +18,22 @@ adjustWindowSizeData();
 
 // Criando posições randômicas
 function randomPosition() {
-// remover o mosquito anterio caso exista
+// remover o mosquito anterior caso exista
 if(document.getElementById("fly")) {
-document.getElementById("fly").remove();
+const fly_id = document.getElementById("fly");
+fly_id.remove();
+
+// Verifica se todas as vidas estão vazias
+if(lifes == 3) {
+    window.location.href = 'game_over.html';
+} else {
+// Adiciona um coração vazio no lugar do cheio
+document.getElementById("c" + lifes).src = '../assets/images/coracao_vazio.png';
+// Incrementa 1 a variavel vidas
+lifes++;
+}
+
+
 }
 
 var positionY = Math.floor(Math.random() * height - 90);
@@ -38,14 +54,17 @@ fly.className = randomSize() + randomSide();
 fly.style.left = positionX + 'px';
 fly.style.top = positionY + 'px';
 fly.style.position = 'absolute';
-fly.id = 'fly'
+fly.id = 'fly';
+fly.addEventListener('click', () => {
+    fly.remove();
+});
 
 // Adiciona um elemento/filho no body
 document.body.appendChild(fly);
 }
 
 // Executa a função randomPosition a cada 1000 milisegundos
-console.log(setInterval( () => { randomPosition() }, 1000));
+console.log(setInterval( () => { randomPosition() }, 2000));
 
 // Função responsável pelo tamanho do mosquito - 3 variações
 function randomSize() {
