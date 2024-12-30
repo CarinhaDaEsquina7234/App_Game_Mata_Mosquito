@@ -44,8 +44,10 @@ fly.id = 'fly'
 document.body.appendChild(fly);
 }
 
+// Executa a função randomPosition a cada 1000 milisegundos
 console.log(setInterval( () => { randomPosition() }, 1000));
 
+// Função responsável pelo tamanho do mosquito - 3 variações
 function randomSize() {
     var breakpoint = Math.floor(Math.random() * 3);
 
@@ -61,6 +63,7 @@ function randomSize() {
     }
 }
 
+// Função responsável pelo lado no qual o mosquito vai estar virado - 2 variações
 function randomSide() {
     var breakpoint = Math.floor(Math.random() * 2);
 
