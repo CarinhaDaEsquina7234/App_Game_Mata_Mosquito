@@ -5,7 +5,7 @@ var width = 0;
 var lifes = 1;
 
 // Tempo do cronômetro
-var time = 100;
+var time = 5;
 
 // Span no qual o time será exibido
 var timeSpan = document.getElementById("timeSpan");
@@ -20,7 +20,7 @@ var cron  = setInterval(() => {
     {
         clearInterval(cron);
         clearInterval(createFly);
-        alert("Victory");
+        window.location.href = 'victory.html';
     }
 
 }, 1000);
