@@ -4,6 +4,28 @@ var width = 0;
 // Variavel de vidas restantes
 var lifes = 1;
 
+// Tempo do cronômetro
+var time = 100;
+
+// Span no qual o time será exibido
+var timeSpan = document.getElementById("timeSpan");
+timeSpan.innerText = time;
+
+// Variavel de cronômetro
+var cron  = setInterval(() => {
+    time--;
+    timeSpan.innerText = time;
+
+    if(time <= 0) 
+    {
+        clearInterval(cron);
+        clearInterval(createFly);
+        alert("Victory");
+    }
+
+}, 1000);
+
+
 // Função para ajustar as dimeesões da janela do browser
 function adjustWindowSizeData() {
 
@@ -64,7 +86,7 @@ document.body.appendChild(fly);
 }
 
 // Executa a função randomPosition a cada 1000 milisegundos
-console.log(setInterval( () => { randomPosition() }, 2000));
+var createFly = setInterval( () => { randomPosition() }, 2000);
 
 // Função responsável pelo tamanho do mosquito - 3 variações
 function randomSize() {
